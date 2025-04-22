@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from typing import Optional
 
 # Cargar variables de entorno
-load_dotenv()
+load_dotenv()  
 
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 model_id = os.getenv("FINE_TUNED_MODEL")
@@ -23,7 +23,7 @@ class UpecitoResponse(BaseModel):
     message: str
     response: Optional[str] = None
 
-@app.post("/upecito", response_model=UpecitoResponse)
+@app.post("/finetune", response_model=UpecitoResponse)
 async def chat_upecito(request: ChatRequest):
     try:
         response = client.chat.completions.create(
